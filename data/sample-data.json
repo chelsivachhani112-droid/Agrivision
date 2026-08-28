@@ -1,0 +1,236 @@
+{
+  "cropData": {
+    "wheat": {
+      "name": "Wheat",
+      "growingSeason": "Rabi (Winter)",
+      "optimalTemp": "15-25°C",
+      "waterRequirement": "450-650mm",
+      "soilType": "Well-drained loamy soil",
+      "fertilizer": "NPK 120:60:40 kg/ha",
+      "commonDiseases": ["rust", "smut", "blast"],
+      "marketPrice": "₹2,000-2,500 per quintal",
+      "yield": "3.5-4.5 tonnes/ha"
+    },
+    "rice": {
+      "name": "Rice",
+      "growingSeason": "Kharif (Monsoon)",
+      "optimalTemp": "25-35°C",
+      "waterRequirement": "1000-1500mm",
+      "soilType": "Clay or clay loam",
+      "fertilizer": "NPK 100:50:50 kg/ha",
+      "commonDiseases": ["blast", "bacterial leaf blight", "sheath blight"],
+      "marketPrice": "₹1,800-2,200 per quintal",
+      "yield": "4.5-6.0 tonnes/ha"
+    },
+    "corn": {
+      "name": "Corn (Maize)",
+      "growingSeason": "Kharif & Rabi",
+      "optimalTemp": "20-30°C",
+      "waterRequirement": "500-800mm",
+      "soilType": "Well-drained sandy loam",
+      "fertilizer": "NPK 150:70:40 kg/ha",
+      "commonDiseases": ["rust", "leaf blight", "stalk rot"],
+      "marketPrice": "₹1,500-2,000 per quintal",
+      "yield": "5.0-7.0 tonnes/ha"
+    },
+    "potato": {
+      "name": "Potato",
+      "growingSeason": "Rabi",
+      "optimalTemp": "15-20°C",
+      "waterRequirement": "500-700mm",
+      "soilType": "Sandy loam with good drainage",
+      "fertilizer": "NPK 180:80:100 kg/ha",
+      "commonDiseases": ["late blight", "early blight", "scab"],
+      "marketPrice": "₹800-1,200 per quintal",
+      "yield": "2.5-3.5 tonnes/ha"
+    }
+  },
+  "soilData": {
+    "alluvial": {
+      "name": "Alluvial Soil",
+      "location": "Indo-Gangetic plains",
+      "characteristics": "Fertile, well-drained, rich in nutrients",
+      "suitableCrops": ["rice", "wheat", "sugarcane", "cotton"],
+      "ph": "6.5-8.0",
+      "organicMatter": "1-2%"
+    },
+    "black": {
+      "name": "Black Soil (Regur)",
+      "location": "Deccan Plateau",
+      "characteristics": "Retains moisture, rich in minerals, cracks when dry",
+      "suitableCrops": ["cotton", "sugarcane", "wheat", "soybean"],
+      "ph": "7.0-8.5",
+      "organicMatter": "0.5-1%"
+    },
+    "red": {
+      "name": "Red Soil",
+      "location": "Peninsular India",
+      "characteristics": "Porous, less fertile, high iron content",
+      "suitableCrops": ["cotton", "pulses", "millets", "oilseeds"],
+      "ph": "5.5-6.5",
+      "organicMatter": "0.5-1%"
+    },
+    "laterite": {
+      "name": "Laterite Soil",
+      "location": "Western Ghats, Eastern Ghats",
+      "characteristics": "Acidic, high iron and aluminum content",
+      "suitableCrops": ["tea", "coffee", "rubber", "coconut"],
+      "ph": "4.5-5.5",
+      "organicMatter": "1-2%"
+    }
+  },
+  "pestData": {
+    "seasonalPests": {
+      "summer": {
+        "name": "Summer Pests",
+        "months": ["March", "April", "May", "June"],
+        "pests": [
+          {
+            "name": "Fruit Flies",
+            "crops": ["vegetables", "fruits"],
+            "treatment": "pheromone traps, bait sprays"
+          },
+          {
+            "name": "Aphids",
+            "crops": ["cotton", "vegetables"],
+            "treatment": "neem oil, ladybugs introduction"
+          },
+          {
+            "name": "Spider Mites",
+            "crops": ["cotton", "vegetables"],
+            "treatment": "sulfur sprays, predatory mites"
+          }
+        ]
+      },
+      "monsoon": {
+        "name": "Monsoon Pests",
+        "months": ["July", "August", "September", "October"],
+        "pests": [
+          {
+            "name": "Armyworms",
+            "crops": ["rice", "vegetables"],
+            "treatment": "biological controls, targeted insecticides"
+          },
+          {
+            "name": "Cutworms",
+            "crops": ["vegetables", "cereals"],
+            "treatment": "soil treatment, barriers"
+          },
+          {
+            "name": "Beetles",
+            "crops": ["multiple crops"],
+            "treatment": "hand picking, light traps"
+          }
+        ]
+      },
+      "winter": {
+        "name": "Winter Pests",
+        "months": ["November", "December", "January", "February"],
+        "pests": [
+          {
+            "name": "Scale Insects",
+            "crops": ["fruits", "trees"],
+            "treatment": "horticultural oils, natural predators"
+          },
+          {
+            "name": "Mealybugs",
+            "crops": ["fruits", "vegetables"],
+            "treatment": "neem oil, biological controls"
+          },
+          {
+            "name": "Whiteflies",
+            "crops": ["cotton", "vegetables"],
+            "treatment": "yellow sticky traps, biological controls"
+          }
+        ]
+      }
+    },
+    "treatmentMethods": {
+      "biological": {
+        "name": "Biological Control",
+        "methods": [
+          "Ladybugs for aphid control",
+          "Parasitic wasps for caterpillar control",
+          "Nematodes for soil pest control",
+          "Birds for insect control"
+        ],
+        "advantages": "Eco-friendly, sustainable, long-term solution"
+      },
+      "chemical": {
+        "name": "Chemical Control",
+        "methods": [
+          "Neem oil for soft-bodied insects",
+          "Pyrethrin for broad-spectrum control",
+          "Insecticidal soap for sucking pests",
+          "Systemic insecticides for severe infestations"
+        ],
+        "advantages": "Quick action, effective for severe cases"
+      },
+      "cultural": {
+        "name": "Cultural Control",
+        "methods": [
+          "Crop rotation to break pest cycles",
+          "Trap crops to divert pests",
+          "Sanitation to remove breeding sites",
+          "Proper irrigation to reduce stress"
+        ],
+        "advantages": "Preventive, cost-effective, sustainable"
+      }
+    }
+  },
+  "weatherData": {
+    "indiaRegions": {
+      "north": {
+        "name": "North India",
+        "states": ["Punjab", "Haryana", "Uttar Pradesh", "Rajasthan"],
+        "climate": "Continental",
+        "majorCrops": ["wheat", "rice", "sugarcane", "mustard"],
+        "rainfall": "500-1000mm"
+      },
+      "south": {
+        "name": "South India",
+        "states": ["Tamil Nadu", "Karnataka", "Kerala", "Andhra Pradesh"],
+        "climate": "Tropical",
+        "majorCrops": ["rice", "coconut", "spices", "fruits"],
+        "rainfall": "800-3000mm"
+      },
+      "east": {
+        "name": "East India",
+        "states": ["West Bengal", "Odisha", "Bihar", "Jharkhand"],
+        "climate": "Tropical monsoon",
+        "majorCrops": ["rice", "jute", "tea", "vegetables"],
+        "rainfall": "1200-2000mm"
+      },
+      "west": {
+        "name": "West India",
+        "states": ["Maharashtra", "Gujarat", "Goa", "Rajasthan"],
+        "climate": "Arid to semi-arid",
+        "majorCrops": ["cotton", "sugarcane", "millets", "oilseeds"],
+        "rainfall": "400-800mm"
+      }
+    }
+  },
+  "fertilizerData": {
+    "nitrogen": {
+      "name": "Nitrogen (N)",
+      "function": "Promotes leaf growth and green color",
+      "sources": ["urea", "ammonium sulfate", "organic compost"],
+      "deficiencySymptoms": "Yellowing leaves, stunted growth",
+      "applicationRate": "40-60 kg/ha for most crops"
+    },
+    "phosphorus": {
+      "name": "Phosphorus (P)",
+      "function": "Promotes root development and flowering",
+      "sources": ["DAP", "SSP", "rock phosphate"],
+      "deficiencySymptoms": "Purple leaves, poor root growth",
+      "applicationRate": "20-40 kg/ha for most crops"
+    },
+    "potassium": {
+      "name": "Potassium (K)",
+      "function": "Improves disease resistance and quality",
+      "sources": ["MOP", "SOP", "wood ash"],
+      "deficiencySymptoms": "Brown leaf edges, weak stems",
+      "applicationRate": "20-40 kg/ha for most crops"
+    }
+  }
+}

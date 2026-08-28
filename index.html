@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2E7D32">
+    <title>AgryNova - Smart Farming AI | एग्रीनोवा</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Farmer Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content profile-modal">
+            <div class="modal-header">
+                <div class="logo">
+                    <div class="logo-3d">
+                        <svg width="35" height="35" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="plantGradientSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6C63FF;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <ellipse cx="22.5" cy="40" rx="8" ry="3" fill="#4ECDC4" opacity="0.6"/>
+                            <path d="M22.5 40 L22.5 18" stroke="url(#plantGradientSmall)" stroke-width="4" stroke-linecap="round"/>
+                            <ellipse cx="22.5" cy="12" rx="10" ry="5" fill="url(#plantGradientSmall)"/>
+                            <ellipse cx="22.5" cy="10" rx="8" ry="4" fill="#6C63FF" opacity="0.7"/>
+                            <ellipse cx="12" cy="25" rx="7" ry="3" fill="url(#plantGradientSmall)" transform="rotate(-30 12 25)"/>
+                            <ellipse cx="33" cy="25" rx="7" ry="3" fill="url(#plantGradientSmall)" transform="rotate(30 33 25)"/>
+                            <circle cx="22.5" cy="8" r="2" fill="#FF6B6B" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <span>AgryNova</span>
+                </div>
+                <button class="close-btn" onclick="closeProfileModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="profile-form">
+                <h2><i class="fas fa-user-circle"></i> Farmer Profile | किसान प्रोफाइल</h2>
+                <p>Set your location and farm details for personalized advice</p>
+                
+                <form id="farmerProfileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-map-marker-alt"></i> State | राज्य</label>
+                            <select id="farmerState" required>
+                                <option value="">Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-city"></i> District | जिला</label>
+                            <input type="text" id="farmerDistrict" placeholder="Enter district" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-home"></i> Village | गांव</label>
+                            <input type="text" id="farmerVillage" placeholder="Enter village">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-language"></i> Language | भाषा</label>
+                            <select id="farmerLanguage" required>
+                                <option value="hi">हिंदी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="kn">ಕನ್ನಡ (Kannada)</option>
+                                <option value="ml">മലയാളം (Malayalam)</option>
+                                <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-mountain"></i> Soil Type | मिट्टी का प्रकार</label>
+                            <select id="soilType">
+                                <option value="">Select Soil Type</option>
+                                <option value="alluvial">Alluvial (जलोढ़)</option>
+                                <option value="black">Black (काली)</option>
+                                <option value="red">Red (लाल)</option>
+                                <option value="laterite">Laterite (लेटराइट)</option>
+                                <option value="sandy">Sandy (रेतीली)</option>
+                                <option value="clay">Clay (चिकनी)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-ruler-combined"></i> Farm Size (Acres) | खेत का आकार</label>
+                            <input type="number" id="farmSize" placeholder="Enter farm size" step="0.5">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-seedling"></i> Current Crop | वर्तमान फसल</label>
+                            <input type="text" id="currentCrop" placeholder="e.g., Wheat, Rice">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-tint"></i> Irrigation | सिंचाई</label>
+                            <select id="irrigationType">
+                                <option value="">Select Irrigation</option>
+                                <option value="canal">Canal (नहर)</option>
+                                <option value="tubewell">Tubewell (नलकूप)</option>
+                                <option value="drip">Drip (ड्रिप)</option>
+                                <option value="sprinkler">Sprinkler (स्प्रिंकलर)</option>
+                                <option value="rainfed">Rainfed (बारिश)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Save Profile
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-3d">
+                    <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 3D Plant Design -->
+                        <defs>
+                            <linearGradient id="plantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6C63FF;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+                            </filter>
+                        </defs>
+                        <!-- 3D Plant Base -->
+                        <ellipse cx="22.5" cy="40" rx="8" ry="3" fill="#4ECDC4" opacity="0.6"/>
+                        <!-- Main Stem -->
+                        <path d="M22.5 40 L22.5 18" stroke="url(#plantGradient)" stroke-width="4" stroke-linecap="round" filter="url(#shadow)"/>
+                        <!-- 3D Leaves -->
+                        <ellipse cx="22.5" cy="12" rx="10" ry="5" fill="url(#plantGradient)" filter="url(#shadow)"/>
+                        <ellipse cx="22.5" cy="10" rx="8" ry="4" fill="#6C63FF" opacity="0.7"/>
+                        <!-- Side Leaves -->
+                        <ellipse cx="12" cy="25" rx="7" ry="3" fill="url(#plantGradient)" transform="rotate(-30 12 25)" filter="url(#shadow)"/>
+                        <ellipse cx="33" cy="25" rx="7" ry="3" fill="url(#plantGradient)" transform="rotate(30 33 25)" filter="url(#shadow)"/>
+                        <!-- Small Details -->
+                        <circle cx="22.5" cy="8" r="2" fill="#FF6B6B" opacity="0.8"/>
+                        <circle cx="18" cy="15" r="1.5" fill="#4ECDC4" opacity="0.6"/>
+                        <circle cx="27" cy="15" r="1.5" fill="#4ECDC4" opacity="0.6"/>
+                    </svg>
+                </div>
+                <span>AgryNova</span>
+            </div>
+            
+            <div class="nav-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="flexibleSearch" placeholder="Ask anything in any language... (कुछ भी पूछें)">
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#detect" class="nav-link">
+                    <i class="fas fa-camera"></i>
+                    <span>Scan</span>
+                </a>
+                <a href="#weather" class="nav-link">
+                    <i class="fas fa-cloud-sun"></i>
+                    <span>Weather</span>
+                </a>
+                <a href="#assistant" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="profile-btn" onclick="openProfileModal()">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </button>
+                <button class="voice-btn">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="highlight">🌱 AgryNova</span><br>
+                    <span class="main-title">Smart Farming AI</span>
+                </h1>
+                <p>
+                    Advanced AI assistant for Indian farmers.<br>
+                    Ask in any language, get location-specific expert advice.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary btn-large" onclick="openLiveCamera()">
+                        <i class="fas fa-camera"></i>
+                        <span>Live Crop Scan</span>
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="scrollToSection('assistant')">
+                        <i class="fas fa-robot"></i>
+                        <span>Ask AI Expert</span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card scan">
+                    <i class="fas fa-camera"></i>
+                    <span>Live Scanning</span>
+                </div>
+                <div class="floating-card ai">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Analysis</span>
+                </div>
+                <div class="floating-card location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Location-Based</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Action Cards -->
+    <section class="quick-actions">
+        <div class="actions-container">
+            <div class="action-card" onclick="openLiveCamera()">
+                <div class="action-icon camera">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Live Scan</h3>
+                <p>Camera se crop scan karein</p>
+            </div>
+            
+            <div class="action-card" onclick="scrollToSection('weather')">
+                <div class="action-icon weather">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <h3>Weather</h3>
+                <p>Location-specific weather updates</p>
+            </div>
+            
+            <div class="action-card" onclick="scrollToSection('assistant')">
+                <div class="action-icon chat">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Ask Expert</h3>
+                <p>Kisi bhi language mein poochein</p>
+            </div>
+            
+            <div class="action-card" onclick="scrollToSection('crops')">
+                <div class="action-icon crops">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Crop Guide</h3>
+                <p>Crop recommendation system</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Crop Scanning Section -->
+    <section id="detect" class="detection-section">
+        <div class="section-header">
+            <h2><i class="fas fa-camera"></i> Live Crop Scanning | लाइव फसल स्कैनिंग</h2>
+            <p>Use camera for real-time crop disease and pest detection</p>
+        </div>
+        
+        <div class="detection-container">
+            <div class="scan-options">
+                <button class="scan-option camera-scan" onclick="openLiveCamera()">
+                    <i class="fas fa-camera"></i>
+                    <span>Live Camera</span>
+                </button>
+                <button class="scan-option upload-scan" onclick="document.getElementById('cropImage').click()">
+                    <i class="fas fa-upload"></i>
+                    <span>Upload Photo</span>
+                </button>
+            </div>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Upload Crop Photo</h3>
+                    <p>Ya live camera use karein</p>
+                    <input type="file" id="cropImage" accept="image/*" onchange="handleImageUpload(event)">
+                    <button class="btn-upload" onclick="document.getElementById('cropImage').click()">
+                        <i class="fas fa-camera"></i>
+                        <span>Choose Photo</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Camera View (Hidden by default) -->
+            <div class="camera-view" id="cameraView" style="display: none;">
+                <video id="cameraFeed" autoplay playsinline></video>
+                <div class="camera-controls">
+                    <button class="btn-capture" onclick="capturePhoto()">
+                        <i class="fas fa-camera"></i>
+                        <span>Capture</span>
+                    </button>
+                    <button class="btn-close-camera" onclick="closeCamera()">
+                        <i class="fas fa-times"></i>
+                        <span>Close</span>
+                    </button>
+                </div>
+                <div class="scanning-overlay">
+                    <div class="scan-line"></div>
+                    <div class="scan-corner top-left"></div>
+                    <div class="scan-corner top-right"></div>
+                    <div class="scan-corner bottom-left"></div>
+                    <div class="scan-corner bottom-right"></div>
+                </div>
+            </div>
+            
+            <div class="detection-result" id="detectionResult" style="display: none;">
+                <div class="result-image">
+                    <img id="uploadedImage" src="" alt="Scanned crop">
+                    <div class="scan-animation" id="scanAnimation">
+                        <div class="scan-bar"></div>
+                    </div>
+                </div>
+                <div class="result-details">
+                    <div class="disease-status" id="diseaseStatus">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Scanning...</span>
+                    </div>
+                    <h3 id="diseaseName">--</h3>
+                    
+                    <!-- Structured Response Format -->
+                    <div class="structured-response">
+                        <div class="response-section">
+                            <h4><i class="fas fa-check-circle"></i> ANSWER | उत्तर</h4>
+                            <p id="answerText">--</p>
+                        </div>
+                        
+                        <div class="response-section">
+                            <h4><i class="fas fa-question-circle"></i> WHY | क्यों</h4>
+                            <p id="whyText">--</p>
+                        </div>
+                        
+                        <div class="response-section">
+                            <h4><i class="fas fa-tasks"></i> WHAT TO DO | क्या करें</h4>
+                            <ol id="whatToDoText">
+                                <li>--</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="response-section">
+                            <h4><i class="fas fa-clock"></i> WHEN | कब</h4>
+                            <p id="whenText">--</p>
+                        </div>
+                        
+                        <div class="response-section caution">
+                            <h4><i class="fas fa-exclamation-triangle"></i> CAUTION | सावधानी</h4>
+                            <p id="cautionText">--</p>
+                        </div>
+                    </div>
+                    
+                    <div class="confidence-meter">
+                        <span>Confidence:</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="confidenceLevel" style="width: 0%"></div>
+                        </div>
+                        <span id="confidenceValue">0%</span>
+                    </div>
+                    
+                    <button class="btn-upload" onclick="resetDetection()">
+                        <i class="fas fa-redo"></i>
+                        <span>Scan Again</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="weather-section">
+        <div class="section-header">
+            <h2><i class="fas fa-cloud-sun"></i> Weather Advisory | मौसम सलाह</h2>
+            <p>Location-specific weather data and farming recommendations</p>
+        </div>
+        
+        <div class="weather-grid">
+            <div class="weather-card main-weather">
+                <div class="weather-header">
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="locationName">Detecting location...</span>
+                    </div>
+                    <div class="refresh" onclick="refreshWeather()">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                </div>
+                <div class="weather-main">
+                    <div class="temperature">
+                        <span id="mainTemp">--°C</span>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                    </div>
+                    <p id="weatherDesc">Loading weather data...</p>
+                </div>
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <i class="fas fa-tint"></i>
+                        <span>Humidity: <strong id="humidity">--%</strong></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-wind"></i>
+                        <span>Wind: <strong id="windSpeed">-- km/h</strong></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <span>Pressure: <strong id="pressure">-- hPa</strong></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="weather-card aqi-card">
+                <div class="aqi-header">
+                    <h3><i class="fas fa-wind"></i> Air Quality</h3>
+                    <span class="aqi-level" id="aqiLevel">--</span>
+                </div>
+                <div class="aqi-main">
+                    <div class="aqi-value" id="aqiValue">--</div>
+                    <div class="aqi-label">AQI Index</div>
+                </div>
+                <div class="aqi-details">
+                    <div class="aqi-item">
+                        <span>PM2.5</span>
+                        <strong id="pm25">--</strong>
+                    </div>
+                    <div class="aqi-item">
+                        <span>PM10</span>
+                        <strong id="pm10">--</strong>
+                    </div>
+                    <div class="aqi-item">
+                        <span>O₃</span>
+                        <strong id="o3">--</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="weather-card advisory-card">
+                <div class="advisory-header">
+                    <h3><i class="fas fa-lightbulb"></i> Weather Advisory</h3>
+                </div>
+                <div class="advisory-content" id="weatherAdvisory">
+                    <div class="advisory-item">
+                        <i class="fas fa-tint"></i>
+                        <span>Loading weather-based recommendations...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section id="assistant" class="assistant-section">
+        <div class="section-header">
+            <h2><i class="fas fa-robot"></i> AI Farming Assistant | एआई कृषि सहायक</h2>
+            <p>Ask in any language, get location-specific expert advice</p>
+        </div>
+        
+        <div class="assistant-container">
+            <div class="chat-interface">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>नमस्ते! मैं AgryNova हूं। आप अपनी भाषा में कृषि से संबंधित कोई भी प्रश्न पूछ सकते हैं।</p>
+                            <p class="english-text">Hello! I'm AgryNova. You can ask any farming-related question in your language.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <div class="input-actions">
+                        <button class="voice-btn-small" onclick="toggleVoiceInput()">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <div class="language-indicator" id="currentLanguage">
+                            <span>Auto-detect language</span>
+                        </div>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="chatInput" placeholder="Type in any language... (किसी भी भाषा में लिखें)">
+                        <button class="send-btn" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-questions">
+                <h4>Common Questions | सामान्य प्रश्न:</h4>
+                <div class="question-buttons">
+                    <button class="question-btn" onclick="askQuestion('Which crop should I grow?')">
+                        <i class="fas fa-seedling"></i>
+                        Which crop should I grow?
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('What is wrong with my crop?')">
+                        <i class="fas fa-bug"></i>
+                        What is wrong with my crop?
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('When should I irrigate?')">
+                        <i class="fas fa-tint"></i>
+                        When should I irrigate?
+                    </button>
+                    <button class="question-btn" onclick="askQuestion('Weather suitable for sowing?')">
+                        <i class="fas fa-cloud-sun"></i>
+                        Weather suitable for sowing?
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crop Recommendation Section -->
+    <section id="crops" class="crops-section">
+        <div class="section-header">
+            <h2><i class="fas fa-seedling"></i> Crop Recommendation | फसल सिफारिश</h2>
+            <p>Personalized crop recommendations based on your location and conditions</p>
+        </div>
+        
+        <div class="recommendation-form">
+            <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> Your Location</label>
+                <div class="location-display" id="userLocation">
+                    <span>Set location in profile for recommendations</span>
+                    <button class="btn-small" onclick="openProfileModal()">Set Profile</button>
+                </div>
+            </div>
+            
+            <div class="crop-recommendations" id="cropRecommendations">
+                <div class="recommendation-card">
+                    <div class="crop-icon wheat">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <div class="crop-details">
+                        <h3>गेहूं (Wheat)</h3>
+                        <p class="crop-reason">Suitable for current season in your region</p>
+                        <div class="crop-stats">
+                            <span><i class="fas fa-thermometer-half"></i> 15-25°C</span>
+                            <span><i class="fas fa-tint"></i> 450-650mm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <div class="crop-icon rice">
+                        <i class="fas fa-bowl-rice"></i>
+                    </div>
+                    <div class="crop-details">
+                        <h3>चावल (Rice)</h3>
+                        <p class="crop-reason">Good water availability in your area</p>
+                        <div class="crop-stats">
+                            <span><i class="fas fa-thermometer-half"></i> 25-35°C</span>
+                            <span><i class="fas fa-tint"></i> 1000-1500mm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card">
+                    <div class="crop-icon corn">
+                        <i class="fas fa-corn"></i>
+                    </div>
+                    <div class="crop-details">
+                        <h3>मक्का (Corn)</h3>
+                        <p class="crop-reason">Matches your soil type and climate</p>
+                        <div class="crop-stats">
+                            <span><i class="fas fa-thermometer-half"></i> 20-30°C</span>
+                            <span><i class="fas fa-tint"></i> 500-800mm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-3d">
+                        <svg width="35" height="35" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="plantGradientFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6C63FF;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#4ECDC4;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <ellipse cx="22.5" cy="40" rx="8" ry="3" fill="#4ECDC4" opacity="0.6"/>
+                            <path d="M22.5 40 L22.5 18" stroke="url(#plantGradientFooter)" stroke-width="4" stroke-linecap="round"/>
+                            <ellipse cx="22.5" cy="12" rx="10" ry="5" fill="url(#plantGradientFooter)"/>
+                            <ellipse cx="22.5" cy="10" rx="8" ry="4" fill="#6C63FF" opacity="0.7"/>
+                            <ellipse cx="12" cy="25" rx="7" ry="3" fill="url(#plantGradientFooter)" transform="rotate(-30 12 25)"/>
+                            <ellipse cx="33" cy="25" rx="7" ry="3" fill="url(#plantGradientFooter)" transform="rotate(30 33 25)"/>
+                            <circle cx="22.5" cy="8" r="2" fill="#FF6B6B" opacity="0.8"/>
+                        </svg>
+                    </div>
+                    <span>AgryNova</span>
+                </div>
+                <p>Advanced AI-powered farming assistant for Indian farmers</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <a href="#detect">Live Scanning</a>
+                    <a href="#weather">Weather Advisory</a>
+                    <a href="#assistant">AI Assistant</a>
+                    <a href="#crops">Crop Recommendation</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Farming Tips</a>
+                    <a href="#">Government Schemes</a>
+                    <a href="#">Market Prices</a>
+                    <a href="#">Pest Control</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AgryNova. Made with ❤️ for Indian Farmers</p>
+        </div>
+    </footer>
+
+    <script src="api/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/voice-assistant.js"></script>
+    <script src="js/crop-detection.js"></script>
+    <script src="js/ai-monitoring.js"></script>
+    <script src="js/camera-handler.js"></script>
+    <script src="js/language-detector.js"></script>
+    <script src="js/image-validator.js"></script>
+    <script src="js/camera-handler.js"></script>
+    <script src="js/language-detector.js"></script>
+</body>
+</html>
